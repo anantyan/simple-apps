@@ -9,6 +9,12 @@ class Lesson extends React.Component {
     }
   }
 
+  modalOpen(arg1) {
+    return () => {
+      this.setState({ifModalOpen: arg1})
+    }
+  }
+
   render() {
     let modal
     if (this.state.ifModalOpen) {
@@ -20,7 +26,7 @@ class Lesson extends React.Component {
               <h2>{this.props.name}</h2>
               <p>{this.props.introduction}</p>
             </div>
-            <button className='modal-close-btn'>
+            <button className='modal-close-btn' onClick={this.modalOpen(false)}>
               Tutup
             </button>
           </div>
@@ -30,7 +36,7 @@ class Lesson extends React.Component {
 
     return (
       <div className='lesson-card'>
-        <div className='lesson-item'>
+        <div className='lesson-item' onClick={this.modalOpen(true)}>
           <p>{this.props.name}</p>
           <img src={this.props.image} />
         </div>
