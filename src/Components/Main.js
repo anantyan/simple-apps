@@ -1,4 +1,5 @@
 import React from "react"
+import Lesson from "./Lesson"
 
 class Main extends React.Component {
 
@@ -40,12 +41,7 @@ class Main extends React.Component {
             {
               this.items().map((item, index) => {
                 return (
-                  <div className='lesson-card'>
-                    <div className='lesson-item'>
-                      <p>{item.name}</p>
-                      <img src={item.image} />
-                    </div>
-                  </div>
+                  <Lesson name={item.name} image={item.image} />
                 )
               })
             }
