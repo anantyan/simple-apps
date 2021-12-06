@@ -4,23 +4,20 @@ class Lesson extends React.Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      ifModalOpen: false
+    }
   }
 
   render() {
-    return (
-      <div className='lesson-card'>
-        <div className='lesson-item'>
-          <p>{this.props.name}</p>
-          <img src={this.props.image} />
-        </div>
-        {/* Siapkan modalnya */}
+    let modal
+    if (this.state.ifModalOpen) {
+      modal = (
         <div className='modal'>
           <div className='modal-inner'>
             <div className='modal-header'></div>
             <div className='modal-introduction'>
-              {/* Tampilkan nama pelajaran */}
               <h2>{this.props.name}</h2>
-              {/* Tampilkan pengantar pelajaran */}
               <p>{this.props.introduction}</p>
             </div>
             <button className='modal-close-btn'>
@@ -28,6 +25,16 @@ class Lesson extends React.Component {
             </button>
           </div>
         </div>
+      )
+    }
+
+    return (
+      <div className='lesson-card'>
+        <div className='lesson-item'>
+          <p>{this.props.name}</p>
+          <img src={this.props.image} />
+        </div>
+        { modal }
       </div>
     )
   }
